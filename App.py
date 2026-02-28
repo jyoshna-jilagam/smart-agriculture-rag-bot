@@ -1,8 +1,10 @@
+import os
 import streamlit as st
 import requests
 
 from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain.schema import Document
 
 
 # -------------------------
@@ -16,7 +18,7 @@ if not OPENROUTER_API_KEY:
 
 
 # -------------------------
-# 🎨 Streamlit UI Config
+# 🎨 Page Config
 # -------------------------
 st.set_page_config(
     page_title="🌾 Smart Agriculture RAG Bot",
@@ -28,18 +30,37 @@ st.markdown("AI-powered educational assistant for crop lifecycle and farming pro
 
 
 # -------------------------
-# 📦 Load Vector Store
+# 📦 Load or Create Vector Store
 # -------------------------
 @st.cache_resource
 def load_vector_store():
     embedding_model = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
-    return FAISS.load_local(
-        "vector_store",
-        embedding_model,
-        allow_dangerous_deserialization=True
-    )
+
+    # If vector store exists → load it
+    if os.path.exists("vector_store/index.faiss"):
+        return FAISS.load_local(
+            "vector_store",
+            embedding_model,
+            allow_dangerous_deserialization=True
+        )
+
+    # Otherwise → create a basic one automatically
+    st.warning("⚠️ Vector store not found. Creating default knowledge base...")
+
+    documents = [
+        Document(page_content="Crop lifecycle includes soil preparation, sowing, irrigation, fertilization, and harvesting."),
+        Document(page_content="Proper irrigation is essential for maintaining soil moisture."),
+        Document(page_content="Weed management helps improve crop productivity."),
+        Document(page_content="Harvesting should be done at the right maturity stage."),
+    ]
+
+    vectorstore = FAISS.from_documents(documents, embedding_model)
+    vectorstore.save_local("vector_store")
+
+    return vectorstore
+
 
 try:
     vectorstore = load_vector_store()
@@ -64,7 +85,7 @@ def is_restricted(query):
 
 
 # -------------------------
-# 🤖 LLM Function (Stable + Safe)
+# 🤖 OpenRouter LLM Function
 # -------------------------
 def generate_answer(query, context):
 
@@ -109,7 +130,6 @@ Provide a simple explanation suitable for farmers.
 
         result = response.json()
 
-        # Safe check for choices
         if "choices" not in result or not result["choices"]:
             return f"⚠️ Unexpected API response: {result}"
 
