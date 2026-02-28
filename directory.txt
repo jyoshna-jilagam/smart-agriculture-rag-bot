@@ -1,0 +1,19 @@
+smart-agriculture-rag-bot/
+│
+├── app.py
+├── create_vector_store.py
+├── knowledge_base.py
+├── requirements.txt
+├── README.md
+├── .env
+├── .gitignore
+│
+├── vector_store/
+│   ├── index.faiss
+│   └── index.pkl
+│
+├── assets/
+│   └── architecture.png
+│
+└── docs/
+    └── project_report.pdf
