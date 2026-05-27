@@ -1,25 +1,25 @@
-# 🌾 Smart Agriculture Crop Process Explainer Bot
+#  Smart Agriculture Crop Process Explainer Bot
 
-> 🚜 Responsible AI-powered RAG system for Agricultural Education  
-> 🔐 Safe • Domain-Restricted • Retrieval-Grounded • Hackathon Ready  
+>  Responsible AI-powered RAG system for Agricultural Education  
+>  Safe • Domain-Restricted • Retrieval-Grounded • Hackathon Ready  
 
 ---
 
-## 📌 Overview
+##  Overview
 
 The **Smart Agriculture Crop Process Explainer Bot** is a Retrieval-Augmented Generation (RAG) based chatbot designed to explain crop lifecycle stages and farming processes in simple, easy-to-understand language.
 
 This system strictly avoids:
-- ❌ Fertilizer recommendations  
-- ❌ Pesticide advice  
-- ❌ Treatment guidance  
-- ❌ Yield prediction  
+-  Fertilizer recommendations  
+-  Pesticide advice  
+-  Treatment guidance  
+-  Yield prediction  
 
 It demonstrates **ethical and responsible AI deployment in agriculture**.
 
 ---
 
-# 🎯 Problem Statement
+#  Problem Statement
 
 - Agricultural documentation is often technical and complex.
 - Farmers may lack structured understanding of crop lifecycle stages.
@@ -30,7 +30,7 @@ There is a need for a **safe, educational AI system** focused only on awareness.
 
 ---
 
-# 💡 Our Solution
+#  Our Solution
 
 We built a **domain-controlled RAG chatbot** that:
 
@@ -41,9 +41,9 @@ We built a **domain-controlled RAG chatbot** that:
 
 ---
 
-# 🧠 System Architecture
+#  System Architecture
 
-## 🔷 High-Level Architecture
+##  High-Level Architecture
 
 ```
 User Query
@@ -67,45 +67,45 @@ Safe Informational Response
 
 ---
 
-## 🔷 Detailed RAG Pipeline
+##  Detailed RAG Pipeline
 
-### 1️⃣ Knowledge Base Layer
+###  Knowledge Base Layer
 - Agricultural lifecycle PDF
 - Clean, domain-restricted content
 - No advisory data included
 
-### 2️⃣ Text Chunking
+###  Text Chunking
 - Split into small overlapping chunks
 - Improves retrieval accuracy
 - Reduces hallucination
 
-### 3️⃣ Embedding Layer
+###  Embedding Layer
 - SentenceTransformer (`all-MiniLM-L6-v2`)
 - Converts text into numerical vectors
 
-### 4️⃣ Vector Database
+###  Vector Database
 - FAISS IndexFlatL2
 - Fast similarity search
 - Lightweight and hackathon friendly
 
-### 5️⃣ Retrieval Layer
+###  Retrieval Layer
 - Query converted to embedding
 - Top-K relevant chunks retrieved
 - Context injected into prompt
 
-### 6️⃣ Controlled Generation Layer
+###  Controlled Generation Layer
 - Gemini Flash model via Google AI Studio
 - Strong system instructions
 - Domain-restricted output
 
-### 7️⃣ Output Guard Layer
+###  Output Guard Layer
 - Keyword-based restriction
 - Blocks fertilizer & yield queries
 - Ensures safe AI usage
 
 ---
 
-# 🛠️ Tech Stack
+#  Tech Stack
 
 | Layer | Technology |
 |--------|------------|
@@ -120,7 +120,7 @@ Safe Informational Response
 
 ---
 
-# 🔄 End-to-End Usage Flow
+#  End-to-End Usage Flow
 
 ## Step 1: User Interaction
 User enters:
@@ -133,7 +133,7 @@ System checks for restricted intent.
 
 If restricted:
 ```
-⚠️ I can only explain crop lifecycle and farming processes.
+ I can only explain crop lifecycle and farming processes.
 ```
 
 ## Step 3: Query Embedding
@@ -159,25 +159,25 @@ Streamlit presents formatted answer.
 
 ---
 
-# 🔐 Responsible AI Measures
+#  Responsible AI Measures
 
 This project includes multiple safety layers:
 
-### ✅ Query Filtering
+###  Query Filtering
 Blocks advisory-related keywords.
 
-### ✅ Domain Restriction
+###  Domain Restriction
 Knowledge base excludes treatment & fertilizer content.
 
-### ✅ Prompt Guardrails
+###  Prompt Guardrails
 Strict system-level instructions.
 
-### ✅ No Predictive Models
+###  No Predictive Models
 No yield forecasting or optimization algorithms.
 
 ---
 
-# 📂 Project Structure
+#  Project Structure
 
 ```
 smart-agriculture-rag-bot/
@@ -201,9 +201,9 @@ smart-agriculture-rag-bot/
 
 ---
 
-# 🚀 How to Run
+#  How to Run
 
-## 1️⃣ Install Dependencies
+##  Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -211,7 +211,7 @@ pip install -r requirements.txt
 
 ---
 
-## 2️⃣ Set API Key
+##  Set API Key
 
 **Mac / Linux**
 ```bash
@@ -225,7 +225,7 @@ set GOOGLE_API_KEY=your_key
 
 ---
 
-## 3️⃣ Create Vector Store
+##  Create Vector Store
 
 ```bash
 python create_vector_store.py
@@ -237,7 +237,7 @@ This generates:
 
 ---
 
-## 4️⃣ Run the Application
+##  Run the Application
 
 ```bash
 streamlit run app.py
@@ -245,7 +245,7 @@ streamlit run app.py
 
 ---
 
-# 🌍 Impact
+# Impact
 
 - Improves agricultural awareness
 - Reduces misinformation
@@ -255,17 +255,17 @@ streamlit run app.py
 
 ---
 
-# 🔮 Future Enhancements
+#  Future Enhancements
 
-- 🌐 Multilingual support (Hindi, Telugu)
-- 🎤 Voice-based assistant
-- 📱 SMS-based rural deployment
-- 📚 Crop-specific knowledge modules
-- 🏛 Government agriculture portal integration
+-  Multilingual support (Hindi, Telugu)
+-  Voice-based assistant
+-  SMS-based rural deployment
+-  Crop-specific knowledge modules
+-  Government agriculture portal integration
 
 ---
 
-# 🏆 Why This Project Stands Out
+#  Why This Project Stands Out
 
 ✔ Responsible AI Architecture  
 ✔ Domain-Specific RAG Implementation  
@@ -275,13 +275,13 @@ streamlit run app.py
 
 ---
 
-# 📜 License
+#  License
 
 For educational and research purposes.
 
 ---
 
-# 🙌 Acknowledgements
+#  Acknowledgements
 
 - Google AI Studio (Gemini Flash)
 - FAISS
